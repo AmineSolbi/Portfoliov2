@@ -192,7 +192,7 @@
                             <div v-for="image in modalContent.ImageDetails" :key="image.imageName" class="text-center">
                                 <img :src="`./assets/images/${image.imageName}`" alt="Project Image"
                                     class="w-full rounded-lg object-cover shadow-lg cursor-pointer"
-                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)" />
+                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)" >
                                 <p class="mt-1 text-sm font-medium">{{ image.imageDetail }}</p>
                             </div>
                         </div>
