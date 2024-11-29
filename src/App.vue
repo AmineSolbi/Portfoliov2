@@ -248,6 +248,8 @@ import { ref,onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
+import AOS from "aos";
+
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
@@ -269,6 +271,7 @@ const checkFontLoaded = () => {
 };
 onMounted(() => {
     checkFontLoaded();
+    AOS.init();
 });
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
