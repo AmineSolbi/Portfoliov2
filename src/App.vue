@@ -1,5 +1,6 @@
 <template>
-    <div v-if="isLoading" class="bg-[#020024] h-screen content-center font-bold text-5xl text-white text-center">Loading...</div>
+    <div v-if="isLoading" class="bg-[#020024] h-screen content-center font-bold text-5xl text-white text-center">
+        Loading...</div>
     <div v-else class="overflow-y-hidden">
         <div>
             <div>
@@ -24,7 +25,7 @@
                             class="bg-[#3a31d8] px-4 py-2 rounded-lg shadow-lg hover:scale-125 duration-300 hover:shadow-[#3a31d8]">
                             Experiences
                         </a>
-                        <button
+                        <button @click="downloadResume"
                             class="bg-[#3a31d8] px-4 py-2 rounded-lg shadow-lg hover:scale-125 duration-300 hover:shadow-[#3a31d8]">
                             Resume
                         </button>
@@ -249,7 +250,7 @@ import { Icon } from '@iconify/vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
-
+import PDF from "./assets/AMINE SOLBI.pdf"
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
@@ -273,6 +274,14 @@ onMounted(() => {
     checkFontLoaded();
     AOS.init();
 });
+const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = PDF;
+    link.download = 'Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
 };
