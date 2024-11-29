@@ -250,7 +250,7 @@ import { Icon } from '@iconify/vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
-import PDF from "./assets/AMINE SOLBI RESUME"
+import PDF from './assets/AMINE_SOLBI_RESUME.pdf';
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
