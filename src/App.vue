@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
                                 <button @click="openProjectDetails(project)"
-                                    class="bg-[#3a31d8] px-4 py-2 rounded-lg mt-10 shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-[#3a31d8]">
+                                    class="bg-[#3a31d8] px-4 py-2 rounded-lg mt-10 shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-[#3a31d8] hidden">
                                     See more
                                 </button>
                             </div>
