@@ -62,7 +62,7 @@
                             class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
                             Experiences
                         </a>
-                        <button @click="toggleMenu" class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
+                        <button @click="downloadResume" class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3 bg-red-500">
                             Resume
                         </button>
                     </div>
@@ -190,9 +190,9 @@
                         <p class="text-md sm:text-lg font-bold">Gallery</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div v-for="image in modalContent.ImageDetails" :key="image.imageName" class="text-center">
-                                <img :src="`./assets/images/${image.imageName}`" alt="Project Image"
+                                <img :src="`/src/assets/images/${image.imageName}`" alt="Project Image"
                                     class="w-full rounded-lg object-cover shadow-lg cursor-pointer"
-                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)" >
+                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)" />
                                 <p class="mt-1 text-sm font-medium">{{ image.imageDetail }}</p>
                             </div>
                         </div>
