@@ -62,7 +62,7 @@
                             class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
                             Experiences
                         </a>
-                        <button @click="downloadResume" class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3 bg-red-500">
+                        <button @click="downloadResume" class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
                             Resume
                         </button>
                     </div>
@@ -190,7 +190,7 @@
                         <p class="text-md sm:text-lg font-bold">Gallery</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div v-for="image in modalContent.ImageDetails" :key="image.imageName" class="text-center">
-                                <img :src="`/src/assets/images/${image.imageName}`" alt="Project Image"
+                                <img :src="image.imageName" alt="Project Image"
                                     class="w-full rounded-lg object-cover shadow-lg cursor-pointer"
                                     @click="openFullImage(`/src/assets/images/${image.imageName}`)" />
                                 <p class="mt-1 text-sm font-medium">{{ image.imageDetail }}</p>
@@ -407,7 +407,7 @@ const myProjects=ref<Projects[]>([
             { Techname: 'Docker', TechIcon: 'skill-icons:docker' }
         ],
         ImageDetails: [
-            { imageName: 'commande.png', imageDetail: 'Commande List' },
+            { imageName: './assets/images/Me.jpeg', imageDetail: 'Commande List' },
             { imageName: 'dashboard.png', imageDetail: 'Dashboard' },
             { imageName: 'managment.png', imageDetail: 'Product managment and overview' },
             { imageName: 'Users.png', imageDetail: 'Users managment' },
