@@ -264,7 +264,8 @@ import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
 import PDF from './assets/AMINE_SOLBI_RESUME.pdf';
-const activeSection = ref('Home'); 
+
+const activeSection = ref<'Home' | 'Skills' | 'Projects' | 'Experiences' | 'Resume'>('Home');
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
@@ -272,9 +273,11 @@ const modalContent = ref<Record<string, any>>({});
 const selectedImage = ref<string>('');
 const fullImage = ref(false);
 const isMenuOpen = ref(false);
-const setActiveSection = (section) => {
-    activeSection.value = section;
+
+const setActiveSection = (section: string) => {
+    activeSection.value = section as typeof activeSection.value;
 };
+
 const checkFontLoaded = () => {
     const font = new FontFace(
         'Inter',
