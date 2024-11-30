@@ -41,29 +41,43 @@
                 <div v-if="isMenuOpen" class="fixed inset-0 z-40">
                     <div @click="toggleMenu" class="absolute inset-0 bg-black bg-opacity-50"></div>
 
-                    <div class="absolute top-0 left-0 bg-[#0A0825] w-[70%] h-full flex flex-col gap-8 p-5 "
+                    <div class="absolute top-0 left-0 bg-[#0A0825] w-[70%] h-full flex flex-col gap-8 p-5 mt-6 font-Inter"
                         :style="{ transform: isMenuOpen ? 'translateX(0%)' : 'translateX(100%) transition-transform duration-500' }">
                         <button @click="toggleMenu" aria-label="Close Menu" class="self-end focus:outline-none">
                             <Icon icon="mdi:close" class="w-6 h-6 text-white" />
                         </button>
-                        <a @click="toggleMenu" href="#home"
-                            class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
+
+                        <!-- Menu Links -->
+                        <a @click="toggleMenu; setActiveSection('Home')" href="" :class="[
+                            'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
+                            activeSection === 'Home' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
                             Home
                         </a>
-                        <a @click="toggleMenu" href="#skills"
-                            class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
+                        <a @click="toggleMenu; setActiveSection('Skills')" href="#skills" :class="[
+                            'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
+                            activeSection === 'Skills' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
                             Skills
                         </a>
-                        <a @click="toggleMenu" href="#Projects"
-                            class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
+                        <a @click="toggleMenu; setActiveSection('Projects')" href="#Projects" :class="[
+                            'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
+                            activeSection === 'Projects' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
                             Projects
                         </a>
-                        <a @click="toggleMenu" href="#Experiences"
-                            class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
+                        <a @click="toggleMenu; setActiveSection('Experiences')" href="#Experiences" :class="[
+                            'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
+                            activeSection === 'Experiences' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
                             Experiences
                         </a>
-                        <button @click="toggleMenu" class="w-3/4 text-left text-lg md:text-xl text-white px-6 py-3">
-                            Resume
+
+                        <button @click="downloadResume" :class="[
+                            'w-3/4 text-left text-lg md:text-xl rounded-lg px-6 py-3',
+                            activeSection === 'Resume' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
+                            Download my resume
                         </button>
                     </div>
                 </div>
@@ -138,11 +152,10 @@
             <div data-aos="fade-left" data-aos-duration="1000">
                 <p class="text-5xl font-bold px-[5%]">Projects</p>
                 <div class="mt-10">
-                    <Carousel class="p-0 lg:p-5 bg-white rounded-lg w-screen lg:w-full" v-bind="config"
+                    <Carousel class="p-5 lg:p-5 bg-white rounded-lg w-screen lg:w-full" v-bind="config"
                         paginationColor="gray">
                         <Slide v-for="project in myProjects" :key="project.id">
-                            <div
-                                class="lg:bg-[#020024] bg-blue-500 px-[5%] py-10 text-white rounded-lg p-8 lg:w-[70%] w-[90%]">
+                            <div class="bg-[#020024] px-[5%] py-10 text-white rounded-lg p-8 lg:w-[70%] w-[90%]">
                                 <p class="text-2xl font-bold">{{ project.Titel }}</p>
                                 <div class="text-white rounded-lg p-5 mt-5 flex gap-5 items-center justify-center"
                                     :style="{ backgroundColor: project.ColorHex }">
@@ -159,7 +172,7 @@
                                     </div>
                                 </div>
                                 <button @click="openProjectDetails(project)"
-                                    class="bg-[#3a31d8] px-4 py-2 rounded-lg mt-10 shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-[#3a31d8]">
+                                    class="bg-[#3a31d8] px-4 py-2 rounded-lg mt-10 shadow-lg hover:scale-110 transition-transform duration-300 hover:shadow-[#3a31d8] hidden">
                                     See more
                                 </button>
                             </div>
@@ -190,9 +203,9 @@
                         <p class="text-md sm:text-lg font-bold">Gallery</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div v-for="image in modalContent.ImageDetails" :key="image.imageName" class="text-center">
-                                <img :src="`./assets/images/${image.imageName}`" alt="Project Image"
+                                <img :src="image.imageName" :alt="image.imageName"
                                     class="w-full rounded-lg object-cover shadow-lg cursor-pointer"
-                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)" />
+                                    @click="openFullImage(`/src/assets/images/${image.imageName}`)">
                                 <p class="mt-1 text-sm font-medium">{{ image.imageDetail }}</p>
                             </div>
                         </div>
@@ -251,6 +264,7 @@ import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
 import PDF from './assets/AMINE_SOLBI_RESUME.pdf';
+const activeSection = ref('Home'); 
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
@@ -258,6 +272,9 @@ const modalContent = ref<Record<string, any>>({});
 const selectedImage = ref<string>('');
 const fullImage = ref(false);
 const isMenuOpen = ref(false);
+const setActiveSection = (section) => {
+    activeSection.value = section;
+};
 const checkFontLoaded = () => {
     const font = new FontFace(
         'Inter',
@@ -407,7 +424,7 @@ const myProjects=ref<Projects[]>([
             { Techname: 'Docker', TechIcon: 'skill-icons:docker' }
         ],
         ImageDetails: [
-            { imageName: 'commande.png', imageDetail: 'Commande List' },
+            { imageName: './assets/images/Me.jpeg', imageDetail: 'Commande List' },
             { imageName: 'dashboard.png', imageDetail: 'Dashboard' },
             { imageName: 'managment.png', imageDetail: 'Product managment and overview' },
             { imageName: 'Users.png', imageDetail: 'Users managment' },
