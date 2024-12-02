@@ -522,10 +522,7 @@ const myProjects=ref<Projects[]>([
         ImageMain: 'Chart',
         Descreption: 'Autonomous cart programmed with Arduino, loaded with goods, navigates based on predefined x, y coordinates using integrated sensors.',
         Technologies: [
-            { Techname: 'VueJs', TechIcon: 'devicon:vuejs' },
-            { Techname: 'TailwindCss', TechIcon: 'devicon:tailwindcss' },
-            { Techname: 'Django', TechIcon: 'vscode-icons:file-type-django' },
-            { Techname: 'Docker', TechIcon: 'skill-icons:docker' }
+            { Techname: 'Arduino', TechIcon: 'skill-icons:arduino' },
         ],
         ImageDetails: [
             { imageName: 'arduino.jpg', imageDetail: 'componants' }
