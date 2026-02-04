@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isLoading" class="bg-[#020024] h-screen content-center font-bold text-5xl text-white text-center">
+    <div v-if="isLoading" class="bg-[#020024] content-center font-bold text-5xl text-white text-center">
         Loading...</div>
     <div v-else class="overflow-y-hidden">
         <div>
@@ -128,7 +128,7 @@
             </div>
         </div>
 
-        <div class="pt-[25%] lg:pt-0 grid lg:h-screen bg-[#020024] text-white font-Inter px-[5%] sm:px-[10%] py-[5%] content-center"
+        <div class="pt-[30%] lg:pt-0 grid bg-[#020024] text-white font-Inter px-[5%] sm:px-[10%] py-[5%] content-center"
             id="skills">
             <div data-aos="fade-right" data-aos-duration="1000">
                 <p class="text-5xl font-bold">Skills</p>
@@ -147,10 +147,10 @@
             </div>
         </div>
 
-        <div class="pt-[25%] lg:pt-0 grid lg:h-screen bg-[#020024] text-white font-Inter lg:px-[5%] sm:px-[10%] py-[5%] content-center"
+        <div class="pt-[25%] lg:pt-0 grid bg-[#020024] text-white font-Inter lg:px-[10%] sm:px-[10%] py-[5%] content-center"
             id="Projects">
             <div data-aos="fade-left" data-aos-duration="1000">
-                <p class="text-5xl font-bold px-[5%]">Projects</p>
+                <p class="text-5xl font-bold px-[0%]">Projects</p>
                 <div class="mt-10">
                     <Carousel class="p-5 lg:p-5 bg-white rounded-lg w-screen lg:w-full" v-bind="config"
                         paginationColor="gray">
@@ -232,13 +232,13 @@
             </div>
         </div>
 
-        <div class="pt-[25%] lg:pt-0 grid lg:h-[160vh] bg-[#020024] text-white font-Inter px-[5%] sm:px-[10%] py-[5%] content-center"
+        <div class="pt-[25%] lg:pt-0 grid bg-[#020024] text-white font-Inter px-[5%] sm:px-[10%] py-[5%] content-center"
             id="Experiences">
             <div data-aos="fade-right" data-aos-duration="1000">
                 <p class="text-5xl font-bold">Experiences</p>
                 <div class="mt-10 rounded-lg p-5 text-black grid lg:grid-cols-3 lg:gap-8 grid-cols-1 gap-5">
                     <div v-for="experience in myExperience" :key="experience.id"
-                        class="bg-gray-100 rounded-lg p-5 space-y-3 drop-shadow-figmashadow">
+                        class="bg-gray-100 rounded-lg p-5 space-y-3">
                         <p class="text-2xl font-bold">{{ experience.name }}</p>
                         <p class="text-lg"><strong>Company:</strong> {{ experience.where }}</p>
                         <p class="text-lg"><strong>Period:</strong> {{ experience.period }}</p>
@@ -530,83 +530,100 @@ const myProjects=ref<Projects[]>([
         ColorHex: '#cbcbcb'
     }
 ])
-const myExperience =ref<Experiance []>([
-    {
-        id: 1,
-        name: 'Technician trainee',
-        where: 'Marsa Maroc',
-        period: 'juin 2021 - août 2021 · 3 months',
-        place: 'Agadir, Souss-Massa, Maroc · Hybride',
-        projects: 'Developed two web applications for managing boats and materials, utilizing full-stack technologies. These applications enable efficient tracking of inventory, maintenance schedules, and resource allocation, improving operational workflow and data accessibility for users',
-        techlearned: [
-            { techname: 'MySQL', techicon:'devicon:mysql'},
-            { techname: 'PhpMyAdmin', techicon: 'simple-icons:phpmyadmin' },
-            { techname: 'Php', techicon: 'skill-icons:php-dark' },
-            { techname: 'jQuery', techicon: 'devicon:jquery' },
-            { techname: 'JavaScript', techicon: 'logos:javascript' },
-            { techname: 'HTML5', techicon: 'devicon:html5' },
-            { techname: 'Bootstrap', techicon: 'skill-icons:bootstrap' }
-
-        ]
-    },
-    {
-        id: 2,
-        name: 'Internship engineering assistant',
-        where: 'Albarray',
-        period: 'juin 2022 - déc. 2022 · 7 months',
-        place: 'Agadir, Souss-Massa, Maroc · Hybride',
-        projects: 'Developed and deployed a web-based inventory management system for Albarray, utilizing Django for the backend and ReactJS for the frontend. The application enabled efficient tracking of inventory, including automatic updates, sorting, and reporting features, with a user-friendly interface for seamless management.',
-        techlearned: [
-            { techname: 'ReactJs', techicon: 'vscode-icons:file-type-reactjs' },
-            { techname: 'TailwindCss', techicon: 'devicon:tailwindcss' },
-            { techname: 'Django', techicon: 'vscode-icons:file-type-django' },
-
-        ]
-    },
-    {
-        id: 3,
-        name: 'Capstone Project in Software Engineering',
-        where: 'Päiperléck Aides et Soins à Domicile - Résidences Seniors',
-        period: 'févr. 2023 - juil. 2023 · 6 months',
-        place: 'Agadir, Souss-Massa, Maroc · Hybride',
-        projects: 'Developed and deployed e-learning web applications using ReactJS, Angular, and Django. The applications were designed to provide an interactive and user-friendly learning environment, integrating features such as course management, quizzes, and multimedia content. Focused on performance optimization, responsive design, and seamless user experience across devices.',
-        techlearned: [
-            { techname: 'ReactJs', techicon: 'vscode-icons:file-type-reactjs' },
-            { techname: 'ChakraUI', techicon: 'devicon:chakraui' },
-            { techname: 'Django', techicon: 'vscode-icons:file-type-django' },
-            { techname: 'Github', techicon: 'mdi:github-box' }
-
-        ]
-    },
-    {
-        id: 4,
-        name: 'Full Stack Dev A&T (Freelance)',
-        where: 'A&T Experts',
-        period: 'juil. 2023 - août 2023 · 2 months',
-        place: 'Agadir, Souss-Massa, Maroc · Hybride',
-        projects: 'employees managment and financial management using Angular and django',
-        techlearned: [
-            { techname: 'Angular', techicon: 'vscode-icons:file-type-angular' },
-            { techname: 'Django', techicon: 'vscode-icons:file-type-django' },
-            { techname: 'Github', techicon: 'mdi:github-box' }
-
-        ]
-    },
-    {
-        id: 5,
-        name: 'Intership SAP ABAP Technical Consultant.',
-        where: 'SKATYS, SAP Gold Partner Maroc & Afrique',
-        period: 'mars 2024 - juil. 2024 · 5 months',
-        place: 'Casablanca-Settat, Maroc · Hybride',
-        projects: 'Implementing API integration using OData, allowing efficient querying and data interaction between systems while ensuring compatibility and performance',
-        techlearned: [
-            { techname: 'ABAP', techicon: '' },
-            { techname: 'ABAP-OO', techicon: '' },
-            { techname: 'SAP', techicon: 'logos:sap' }
-
-        ]
-    }
+const myExperience = ref<Experiance   []>([
+  {
+    id: 6,
+    name: 'IT Support / Help Desk Technician',
+    where: 'Biinnova',
+    period: 'July 2025 – February 2026 · 7 months',
+    place: 'Agadir · On-site / Hybrid',
+    projects:
+      'Provided daily IT support and help desk services to end users, resolving hardware, software, and system-related issues. Assisted users with Windows troubleshooting, printers, network access, and office applications. Performed basic system administration tasks, managed purchase orders, maintained IT asset inventory, and used ticket management systems and ERP tools (Odoo and Sage ERP X3) for ticket tracking, asset management, and inventory control.',
+    techlearned: [
+      { techname: 'Windows Support', techicon: '' },
+      { techname: 'IT Help Desk', techicon: '' },
+      { techname: 'Odoo', techicon: 'logos:odoo' },
+      { techname: 'Sage ERP X3', techicon: '' }
+    ]
+  },
+  {
+    id: 5,
+    name: 'SAP ABAP Technical Consultant Intern',
+    where: 'SKATYS – SAP Gold Partner (Morocco & Africa)',
+    period: 'March 2024 – July 2024 · 5 months',
+    place: 'Casablanca-Settat, Morocco · Hybrid',
+    projects:
+      'Implemented API integrations using OData, enabling efficient data exchange between systems while ensuring performance, scalability, and compatibility with SAP environments.',
+    techlearned: [
+      { techname: 'ABAP', techicon: '' },
+      { techname: 'ABAP OO', techicon: '' },
+      { techname: 'SAP', techicon: 'logos:sap' }
+    ]
+  },
+  {
+    id: 4,
+    name: 'Full Stack Developer (Freelance)',
+    where: 'A&T Experts',
+    period: 'July 2023 – August 2023 · 2 months',
+    place: 'Agadir, Souss-Massa, Morocco · Hybrid',
+    projects:
+      'Developed employee management and financial management systems using Angular and Django, focusing on data organization, reporting, and secure access.',
+    techlearned: [
+      { techname: 'Angular', techicon: 'vscode-icons:file-type-angular' },
+      { techname: 'Django', techicon: 'vscode-icons:file-type-django' },
+      { techname: 'GitHub', techicon: 'mdi:github-box' }
+    ]
+  },
+  {
+    id: 3,
+    name: 'Capstone Project – Software Engineering',
+    where: 'Päiperléck Aides et Soins à Domicile – Senior Residences',
+    period: 'February 2023 – July 2023 · 6 months',
+    place: 'Agadir, Souss-Massa, Morocco · Hybrid',
+    projects:
+      'Developed and deployed e-learning web applications using ReactJS, Angular, and Django. The platforms provided interactive learning environments with course management, quizzes, and multimedia content, focusing on performance optimization, responsive design, and seamless user experience across devices.',
+    techlearned: [
+      { techname: 'ReactJS', techicon: 'vscode-icons:file-type-reactjs' },
+      { techname: 'Chakra UI', techicon: 'devicon:chakraui' },
+      { techname: 'Django', techicon: 'vscode-icons:file-type-django' },
+      { techname: 'GitHub', techicon: 'mdi:github-box' }
+    ]
+  },
+  {
+    id: 2,
+    name: 'Engineering Assistant Intern',
+    where: 'Albarray',
+    period: 'June 2022 – December 2022 · 7 months',
+    place: 'Agadir, Souss-Massa, Morocco · Hybrid',
+    projects:
+      'Developed and deployed a web-based inventory management system using Django for the backend and ReactJS for the frontend. The system enabled efficient inventory tracking with automatic updates, sorting, reporting features, and a user-friendly interface.',
+    techlearned: [
+      { techname: 'ReactJS', techicon: 'vscode-icons:file-type-reactjs' },
+      { techname: 'Tailwind CSS', techicon: 'devicon:tailwindcss' },
+      { techname: 'Django', techicon: 'vscode-icons:file-type-django' }
+    ]
+  },
+  {
+    id: 1,
+    name: 'Technician Trainee',
+    where: 'Marsa Maroc',
+    period: 'June 2021 – August 2021 · 3 months',
+    place: 'Agadir, Souss-Massa, Morocco · Hybrid',
+    projects:
+      'Developed two web applications for managing boats and materials using full-stack technologies. These applications enabled efficient inventory tracking, maintenance scheduling, and resource allocation, improving operational workflows and data accessibility.',
+    techlearned: [
+      { techname: 'MySQL', techicon: 'devicon:mysql' },
+      { techname: 'phpMyAdmin', techicon: 'simple-icons:phpmyadmin' },
+      { techname: 'PHP', techicon: 'skill-icons:php-dark' },
+      { techname: 'jQuery', techicon: 'devicon:jquery' },
+      { techname: 'JavaScript', techicon: 'logos:javascript' },
+      { techname: 'HTML5', techicon: 'devicon:html5' },
+      { techname: 'Bootstrap', techicon: 'skill-icons:bootstrap' }
+    ]
+  }
 ])
+
+
 </script>
 <style>
 html {
