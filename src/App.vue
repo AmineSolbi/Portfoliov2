@@ -263,7 +263,7 @@ import { Icon } from '@iconify/vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
-import PDF from './assets/AMINE_SOLBI_RESUME.pdf';
+import PDF from './assets/AmineSolbicv.pdf';
 
 const activeSection = ref<'Home' | 'Skills' | 'Projects' | 'Experiences' | 'Resume'>('Home');
 const isLoading = ref(true);
@@ -533,12 +533,12 @@ const myProjects=ref<Projects[]>([
 const myExperience = ref<Experiance   []>([
   {
     id: 6,
-    name: 'IT Support / Help Desk Technician',
+    name: 'ERP Developer & Support Specialist (Sage X3 / Odoo)',
     where: 'Biinnova',
     period: 'July 2025 – February 2026 · 7 months',
     place: 'Agadir · On-site / Hybrid',
     projects:
-      'Provided daily IT support and help desk services to end users, resolving hardware, software, and system-related issues. Assisted users with Windows troubleshooting, printers, network access, and office applications. Performed basic system administration tasks, managed purchase orders, maintained IT asset inventory, and used ticket management systems and ERP tools (Odoo and Sage ERP X3) for ticket tracking, asset management, and inventory control.',
+      'IT support and incident resolution, ticket management in Odoo, IT equipment administration, and monitoring of orders and production processes in Sage ERP X3. Development and deployment of a Python Windows service for automated integration of biometric time attendance data.',
     techlearned: [
       { techname: 'Windows Support', techicon: '' },
       { techname: 'IT Help Desk', techicon: '' },
