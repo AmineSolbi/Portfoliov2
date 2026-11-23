@@ -21,6 +21,10 @@
                             class="bg-[#3a31d8] px-4 py-2 rounded-lg shadow-lg hover:scale-125 duration-300 hover:shadow-[#3a31d8]">
                             Projects
                         </a>
+                       <a href="#Certifications"
+                            class="bg-[#3a31d8] px-4 py-2 rounded-lg shadow-lg hover:scale-125 duration-300 hover:shadow-[#3a31d8]">
+                            Certfication
+                        </a>
                         <a href="#Experiences"
                             class="bg-[#3a31d8] px-4 py-2 rounded-lg shadow-lg hover:scale-125 duration-300 hover:shadow-[#3a31d8]">
                             Experiences
@@ -232,6 +236,84 @@
             </div>
         </div>
 
+       <div class="pt-[15%] lg:pt-0 grid bg-[#020024] text-white font-Inter
+         px-[5%] sm:px-[10%] py-[8%] content-center" id="Certifications">
+            <div data-aos="fade-right" data-aos-duration="1000">
+
+                <!-- Section Heading -->
+                <p class="text-4xl sm:text-5xl font-bold">
+                    Certifications<span class="text-cyan-400"></span>
+                </p>
+
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">
+                    Professional training and networking certifications
+                </p>
+
+                <!-- Certificates Grid -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div v-for="certification in MyCertifi" :key="certification.id" class="group relative overflow-hidden bg-gray-100
+               text-gray-900 rounded-xl p-6
+               border border-transparent
+               hover:border-cyan-400 hover:-translate-y-2
+               transition-all duration-300 shadow-lg">
+
+                        <!-- Icon and Category -->
+                        <div class="flex justify-between items-center mb-7">
+                            <div class="w-14 h-14 rounded-xl bg-cyan-100
+                      flex items-center justify-center text-3xl">
+                                {{ certification.icon }}
+                            </div>
+
+                            <span class="text-xs font-semibold text-cyan-700
+                       bg-cyan-100 px-3 py-1.5 rounded-full">
+                                Networking
+                            </span>
+                        </div>
+
+                        <!-- Certificate Information -->
+                        <h3 class="text-xl font-bold mb-3
+                   group-hover:text-cyan-700 transition-colors">
+                            {{ certification.title }}
+                        </h3>
+
+                        <p class="text-sm text-gray-600">
+                            {{ certification.issuer }}
+                        </p>
+
+                        <p class="text-xs text-gray-500 mt-3">
+                            {{
+                                new Date(certification.date).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                            month: 'long'
+                            })
+                            }}
+                        </p>
+
+                        <!-- Download Button -->
+                        <div class="border-t border-gray-300 mt-6 pt-5">
+                            <a :href="`/certification/${certification.certificateUrl}`"
+                                :download="certification.certificateUrl" class="inline-flex items-center justify-center gap-2
+                   w-full rounded-lg bg-[#020024] text-white
+                   px-4 py-3 text-sm font-semibold
+                   hover:bg-cyan-700 transition-all duration-300">
+                                <span>Download Certificate</span>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="pt-[25%] lg:pt-0 grid bg-[#020024] text-white font-Inter px-[5%] sm:px-[10%] py-[5%] content-center"
             id="Experiences">
             <div data-aos="fade-right" data-aos-duration="1000">
@@ -363,6 +445,14 @@ interface Experiance{
         techname:string;
         techicon:string
     }[];
+}
+interface Certification {
+    id:number
+    title:string
+    issuer:string
+    date:Date
+    icon:string
+    certificateUrl:string
 }
 const mySkills=ref<Skills[]>([
     {
@@ -530,7 +620,7 @@ const myProjects=ref<Projects[]>([
         ColorHex: '#cbcbcb'
     }
 ])
-const myExperience = ref<Experiance   []>([
+const myExperience = ref<Experiance[]>([
   {
     id: 6,
     name: 'ERP Developer & Support Specialist (Sage X3 / Odoo)',
@@ -621,6 +711,33 @@ const myExperience = ref<Experiance   []>([
       { techname: 'Bootstrap', techicon: 'skill-icons:bootstrap' }
     ]
   }
+])
+
+const MyCertifi = ref<Certification[]>([
+      {
+        id:1,
+        title: "Networking Basics",
+        issuer: "Cisco Networking Academy",
+        date: new Date("2026-11-22T03:24:00"),
+        icon: "🌐",
+        certificateUrl: "Networking_Basics_certificate_aminesolbi4-gmail-com_15013505-d244-4e42-b1d8-6935fb5c390b.pdf",
+    },
+    {
+        id:2,
+        title: "Routing and switching",
+        issuer: "Cisco Networking Academy",
+        date: new Date("2021-04-18T03:24:00"),
+        icon: "🌐",
+        certificateUrl: "CCNA_R-S-_Routing_and_Switching_Essentials_certificate_amine-solbi-e-polytechnique-ma_bcbf3d33-7343-4d04-aaba-15a0e57c5057.pdf",
+    },
+    {
+        id:3,
+        title: "Introduction to Networks",
+        issuer: "Cisco Networking Academy",
+        date: new Date("2021-01-06T03:24:00"),
+        icon: "🌐",
+        certificateUrl: "CCNA_R-S-_Introduction_to_Networks_certificate_amine-solbi-e-polytechnique-ma_62e971ea-04df-4c45-b08f-9c454bef2dfc.pdf",
+    }
 ])
 
 
