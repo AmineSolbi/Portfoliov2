@@ -70,6 +70,14 @@
                         ]">
                             Projects
                         </a>
+
+                        <a @click="toggleMenu; setActiveSection('Certifications')" href="#Certifications" :class="[
+                            'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
+                            activeSection === 'Certifications' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
+                        ]">
+                            Certificates
+                        </a>
+                        
                         <a @click="toggleMenu; setActiveSection('Experiences')" href="#Experiences" :class="[
                             'rounded-lg w-3/4 text-left text-lg md:text-xl px-6 py-3',
                             activeSection === 'Experiences' ? 'bg-white text-[#0A0825]' : 'bg-transparent text-white'
@@ -347,7 +355,7 @@ import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
 import AOS from "aos";
 import PDF from './assets/AmineSolbicv.pdf';
 
-const activeSection = ref<'Home' | 'Skills' | 'Projects' | 'Experiences' | 'Resume'>('Home');
+const activeSection = ref<'Home' | 'Skills' | 'Projects' | 'Experiences' | 'Resume' | 'Certifications' >('Home');
 const isLoading = ref(true);
 const Myname = ref('<Amine Solbi />');
 const showModal = ref(false);
